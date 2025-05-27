@@ -1,0 +1,49 @@
+[package]
+name = "chord-forge"
+version = "0.1.0"
+edition = "2024"
+authors = [ "LullaBug" ]
+license = "MIT OR Apache-2.0"
+
+[package.metadata.release]
+release = false
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+async-trait = "^0.1"
+axum  = { version = "^0.8", default-features = false }
+base64 = "^0.22"
+chrono = "^0.4"
+console_error_panic_hook = "^0.1"
+downcast-rs = "^2.0"
+hmac = "^0.12"
+serde ={ version = "^1.0", features = ["derive"] }
+serde_json = "^1.0"
+sha1 = "^0.10"
+thiserror = "^2.0"
+tokio = { version = "^1.0", features = ["rt", "macros"] }
+tower-service = "^0.3"
+tracing = "^0.1"
+tracing-web = "^0.1"
+tracing-subscriber = { version = "^0.3", features=['time', 'json'] }
+time = "^0.3"
+url = { version = "^2.5", features = ["serde"] }
+uuid = { version = "^1.17", features = ["v4", "js"] }
+worker = { version="^0.5", features=['http', 'axum'] }
+worker-macros = { version = "^0.5", features = ["http"] }
+reqwest = "^0.12"
+rand = "^0.9"
+utoipa = { version = "^5.3", features = ["axum_extras"] }
+utoipa-axum ={ version = "^0.2"}
+utoipa-redoc = { version = "^6.0", features = ["axum"] }
+clap = { version = "^4.5", features = ["cargo"] }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+time = { version = "^0.3", features=['wasm-bindgen'] }
+wasm-bindgen = "^0.2"
+getrandom = { version = "^0.3", features = ["wasm_js"] }

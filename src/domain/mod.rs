@@ -1,0 +1,1 @@
+pub mod aigc_detect;
